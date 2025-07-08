@@ -9,6 +9,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
+
+     protected $policies = [
+    \App\Models\Item::class => \App\Policies\ItemPolicy::class,
+];
+
     public function register(): void
     {
         //
