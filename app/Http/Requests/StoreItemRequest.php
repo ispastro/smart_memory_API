@@ -26,7 +26,7 @@ class StoreItemRequest extends FormRequest
             'item_name' => 'required|string|max:255',
             'location' => 'nullable|string|max:255',
             'notes' => 'nullable|string',
-            'photo' => 'nullable|image|max:2048', //
+            'photo' =>  'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', //
         ];
     }
 }
