@@ -1,3 +1,159 @@
+Smart Memory – Laravel Backend
+Smart Memory is a secure and intelligent backend API built with Laravel, designed to help users capture, organize, search, and retrieve personal items, notes, and locations.
+This backend powers the Smart Memory platform, offering authentication, secure storage, search functionality, and file uploads.
+
+🚀 Features
+🔐 User Authentication & Authorization
+
+Register, login, and logout securely
+
+Token-based authentication with Laravel Sanctum
+
+CSRF protection & session invalidation on logout
+
+📦 Item Management
+
+Create, read, update, and delete (CRUD) personal items
+
+Optional image upload for each item
+
+Store metadata: name, location, notes
+
+🔍 Search
+
+Search items by keyword
+
+Filter results by authenticated user
+
+🛡 Security
+
+Form request validation for data integrity
+
+Image size/type validation for uploads
+
+Authorization checks for item updates/deletion
+
+🛠 Tech Stack
+Component	Technology
+Backend	Laravel 11
+Authentication	Laravel Sanctum
+Database	MySQL 
+Storage	Laravel Filesystem (Public Disk)
+API Format	JSON (RESTful)
+
+📂 Project Structure (Backend)
+bash
+Copy
+Edit
+app/
+ ├── Http/
+ │   ├── Controllers/
+ │   │   ├── AuthController.php   # Authentication logic
+ │   │   └── ItemController.php   # Item CRUD & search
+ │   ├── Requests/
+ │   │   ├── StoreItemRequest.php # Validation rules for creating items
+ │   │   └── UpdateItemRequest.php# Validation rules for updating items
+ ├── Models/
+ │   ├── User.php
+ │   └── Item.php
+routes/
+ ├── api.php                     # API routes
+storage/
+ ├── app/public/photos           # Uploaded item photos
+⚡ API Endpoints
+Auth
+| Method | Endpoint    | Description            | Auth Required |
+| ------ | ----------- | ---------------------- | ------------- |
+| POST   | `/register` | Register a new user    | ❌             |
+| POST   | `/login`    | Login and get token    | ❌             |
+| POST   | `/logout`   | Logout and invalidate  | ✅             |
+| GET    | `/user`     | Get authenticated user | ✅             |
+
+
+Items
+| Method | Endpoint              | Description             | Auth Required |
+| ------ | --------------------- | ----------------------- | ------------- |
+| GET    | `/items`              | List all user items     | ✅             |
+| GET    | `/items/{id}`         | View single item        | ✅             |
+| POST   | `/items`              | Create new item         | ✅             |
+| PUT    | `/items/{id}`         | Update an item          | ✅             |
+| DELETE | `/items/{id}`         | Delete an item          | ✅             |
+| GET    | `/items/search?q=...` | Search items by keyword | ✅             |
+
+📦 Installation & Setup
+1️⃣ Clone the repository
+
+
+git clone https://github.com/ispastro/smart_memory_API
+cd  smart_memory_API
+2️⃣ Install dependencies
+
+bash
+
+composer install
+3️⃣ Environment setup
+
+bash
+
+cp .env.example .env
+php artisan key:generate
+Update .env with your database credentials and storage settings.
+
+4️⃣ Run migrations
+
+bash
+
+php artisan migrate
+5️⃣ Link storage for file uploads
+
+bash
+
+php artisan storage:link
+6️⃣ Serve the application
+
+bash
+
+php artisan serve
+The backend will be available at:
+
+
+http://127.0.0.1:8000
+🔑 Authentication
+All protected routes use Bearer Token authentication via Laravel Sanctum.
+Include your token in the Authorization header:
+
+http
+
+Authorization: Bearer YOUR_TOKEN_HERE
+📌 Notes
+All image uploads are stored in storage/app/public/photos.
+
+File validation ensures maximum size 2MB and type restrictions (jpg, jpeg, png, webp).
+
+Only the authenticated user can access their items.
+
+🤝 Contributing
+Contributions are welcome!
+
+Fork the repo
+
+Create a new branch
+
+Submit a pull request
+
+📜 License
+This project is licensed under the MIT License.
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
